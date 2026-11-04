@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CodeInsight — AI Code Review</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">&lt;/&gt;</div><div><strong>CodeInsight</strong><small>CODE REVIEW STUDIO</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active"><span>▣</span> Analyzer</button>
+      <div class="side-card"><span class="live-dot"></span><div><b>Static analysis</b><small>Code is analyzed locally by rules</small></div></div>
+      <div class="sidebar-bottom"><span class="avatar">CI</span><div><b>Student Edition</b><small>Prototype v1.0</small></div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><span class="eyebrow">DEVELOPER TOOLKIT</span><h1>Code Review Analyzer</h1><p>Understand your code quality and algorithmic complexity.</p></div><div class="top-pill"><span class="live-dot"></span> Ready to analyze</div></header>
+      <section class="workspace">
+        <div class="editor-panel panel">
+          <div class="panel-head"><div><span class="step">01</span><b>Source code</b></div><div class="head-actions"><select id="language"><option value="python">Python</option><option value="other">Other language</option></select><button id="sampleBtn" class="text-btn">Load sample</button></div></div>
+          <div class="editor-wrap"><div class="line-numbers" id="lineNumbers">1</div><textarea id="code" spellcheck="false" aria-label="Source code" placeholder="Paste your code here..."></textarea></div>
+          <div class="editor-footer"><span id="lineCount">0 lines</span><span>Static analysis · No code execution</span></div>
+          <button id="analyzeBtn" class="primary-btn"><span>✦</span> Analyze code <span class="arrow">→</span></button>
+          <p class="privacy-note">Your submitted code is analyzed by this prototype and is not executed.</p>
+        </div>
+        <div class="results-panel">
+          <div class="panel report-panel">
+            <div class="panel-head"><div><span class="step">02</span><b>Analysis report</b></div><span id="reportStatus" class="status">WAITING</span></div>
+            <div id="emptyState" class="empty-state"><div class="empty-icon">⌁</div><h3>Your insights will appear here</h3><p>Run an analysis to see complexity estimates, code review findings, and optimization guidance.</p></div>
+            <div id="report" class="report hidden">
+              <div class="complexity-card"><div><span class="muted-label">ESTIMATED TIME COMPLEXITY</span><div id="complexity" class="big-o">O(n)</div><p id="complexitySummary"></p></div><div class="complexity-symbol">ƒ(x)</div></div>
+              <div class="metrics"><div><span class="metric-value" id="loopCount">0</span><span class="metric-label">Loops found</span></div><div><span class="metric-value" id="depthCount">0</span><span class="metric-label">Max loop depth</span></div><div><span class="metric-value" id="findingCount">0</span><span class="metric-label">Findings</span></div></div>
+              <div class="findings-head"><b>Code review findings</b><span id="findingLabel">0 items</span></div>
+              <div id="findings" class="findings"></div>
+              <div class="recommendation"><div class="rec-icon">✧</div><div><b>Optimization tip</b><p id="tip">Prefer efficient data structures and avoid repeated work inside loops.</p></div></div>
+            </div>
+          </div>
+          <div class="bottom-note"><span>ⓘ</span> Complexity is an estimate based on recognized patterns, not a guarantee of runtime.</div>
+        </div>
+      </section>
+      <footer>CodeInsight <span>·</span> AI-Based Code Review &amp; Time Complexity Analyzer</footer>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
